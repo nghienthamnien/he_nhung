@@ -1,0 +1,24 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MQTT Message Display</title>
+  </head>
+  <body>
+    <div id="message-display"></div>
+
+    <script src="https://cdn.socket.io/4.1.2/socket.io.min.js"></script>
+    <script>
+      const socket = io("http://localhost:3000"); // Đổi thành địa chỉ máy chủ của bạn
+
+      // Khi nhận được tin nhắn từ MQTT thông qua socket.io
+      socket.on("mqtt_message", (message) => {
+        // Hiển thị tin nhắn lên giao diện
+        const messageDisplay = document.getElementById("message-display");
+        messageDisplay.innerHTML += `<p>${message}</p>`;
+      });
+    </script>
+  </body>
+</html>
