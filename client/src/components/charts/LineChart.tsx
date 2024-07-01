@@ -27,7 +27,7 @@ const options = {
     },
     title: {
       display: true,
-      text: "Nghia cho",
+      text: "test",
     },
   },
   scales: {

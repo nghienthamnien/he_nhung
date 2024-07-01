@@ -1,16 +1,14 @@
 import { useLineData } from "@/hooks/LineChart";
-import { LineDataType, ScheduleTableFields } from "@/utils/type";
+import { LineDataType } from "@/utils/type";
 import { createContext, useContext, useEffect, useState } from "react";
 import { MqttContext, dataTopic } from "./MqttContext";
 
 export const DashboardContext = createContext<{
-  cardData: ScheduleTableFields | null;
   tempLineData: LineDataType | null;
   humidLineData: LineDataType | null;
   lightLineData: LineDataType | null;
   moiLineData: LineDataType | null;
 }>({
-  cardData: null,
   tempLineData: null,
   humidLineData: null,
   lightLineData: null,
@@ -79,12 +77,9 @@ export const DashboardContextProvider = ({
     });
   }, []);
 
-  const [cardData, setData] = useState<ScheduleTableFields | null>(null);
-
   return (
     <DashboardContext.Provider
       value={{
-        cardData,
         tempLineData,
         humidLineData,
         lightLineData,

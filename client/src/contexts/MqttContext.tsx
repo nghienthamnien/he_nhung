@@ -18,7 +18,6 @@ export const MqttContext = createContext<{
 });
 
 export const dataTopic = "esp32/data";
-export const controlTopic = "control";
 export const MqttContextProvider = ({
   children,
 }: {
@@ -40,7 +39,6 @@ export const MqttContextProvider = ({
         console.log("Connected to MQTT broker at " + brokerUrl);
         setIsSuccess(true);
         mqttSub({ topic: dataTopic, qos: 0 });
-        mqttSub({ topic: controlTopic, qos: 0 });
       });
       mqttClient.on("error", (err) => {
         console.error(`Error: ${err}`);
